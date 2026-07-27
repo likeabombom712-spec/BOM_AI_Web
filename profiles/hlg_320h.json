@@ -1,0 +1,867 @@
+{
+  "profile_version": 1,
+  "family": "HLG-320H",
+  "description": "Validated HLG-320H Excel layout and approved vendor naming rules",
+  "default_variant": 2,
+  "supported_variants": [
+    2
+  ],
+  "target_model_suffix": "-FA",
+  "work_order_variant_suffix": "A",
+  "semi_finished": "9HLG-320HA-P",
+  "part_aliases": {
+    "2CD6BAT54A": "2CD6BAT54A-TSC",
+    "2CDA1SS355": "2CDA1SS355-TC",
+    "2CU1LA4310CRPA": "2CU1LA431OCRPA"
+  },
+  "approved_items": [
+    {
+      "part_no": "1ZZ2HLG-320ALFA",
+      "specification": "R4 HLG-320ALFA FR-4 2OZ DS1.6t M2GZ",
+      "position_order": [
+        "PCB(先AI)"
+      ]
+    },
+    {
+      "part_no": "2AR10805A0R0J",
+      "specification": "SMD R/C  1/8W     0Ω    5%  0805",
+      "position_order": [
+        "RTH3",
+        "R925",
+        "BC1",
+        "BC2"
+      ]
+    },
+    {
+      "part_no": "2AR10805A4R7J",
+      "specification": "SMD R/C  1/8W   4.7Ω    5%  0805",
+      "position_order": [
+        "R105",
+        "R112",
+        "R114",
+        "R102"
+      ]
+    },
+    {
+      "part_no": "2AR10805B200J",
+      "specification": "SMD R/C  1/8W    20Ω    5%  0805",
+      "position_order": [
+        "R20",
+        "R24"
+      ]
+    },
+    {
+      "part_no": "2AR10805B220J",
+      "specification": "SMD R/C  1/8W    22Ω    5%  0805",
+      "position_order": [
+        "R13",
+        "R10"
+      ]
+    },
+    {
+      "part_no": "2AR10805B330J",
+      "specification": "SMD R/C  1/8W    33Ω    5%  0805",
+      "position_order": [
+        "R12"
+      ]
+    },
+    {
+      "part_no": "2AR10805B750J",
+      "specification": "SMD R/C  1/8W    75Ω    5%  0805",
+      "position_order": [
+        "R21",
+        "R22"
+      ]
+    },
+    {
+      "part_no": "2AR10805C511J",
+      "specification": "SMD R/C  1/8W   510Ω    5%  0805",
+      "position_order": [
+        "R914"
+      ]
+    },
+    {
+      "part_no": "2AR10805C751J",
+      "specification": "SMD R/C  1/8W   750Ω    5%  0805",
+      "position_order": [
+        "R915"
+      ]
+    },
+    {
+      "part_no": "2AR10805D102J",
+      "specification": "SMD R/C  1/8W    1KΩ    5%  0805",
+      "position_order": [
+        "R140",
+        "R132",
+        "R134",
+        "R139"
+      ]
+    },
+    {
+      "part_no": "2AR10805D202J",
+      "specification": "SMD R/C  1/8W    2KΩ    5%  0805",
+      "position_order": [
+        "R120"
+      ]
+    },
+    {
+      "part_no": "2AR10805D302J",
+      "specification": "SMD R/C  1/8W    3KΩ    5%  0805",
+      "position_order": [
+        "R922"
+      ]
+    },
+    {
+      "part_no": "2AR10805D562J",
+      "specification": "SMD R/C  1/8W  5.6KΩ    5%  0805",
+      "position_order": [
+        "R36",
+        "R37"
+      ]
+    },
+    {
+      "part_no": "2AR10805D752J",
+      "specification": "SMD R/C  1/8W  7.5KΩ    5%  0805",
+      "position_order": [
+        "R910"
+      ]
+    },
+    {
+      "part_no": "2AR10805E103J",
+      "specification": "SMD R/C  1/8W   10KΩ    5%  0805",
+      "position_order": [
+        "R23",
+        "R11",
+        "R14",
+        "R19",
+        "R33",
+        "R143"
+      ]
+    },
+    {
+      "part_no": "2AR10805E123J",
+      "specification": "SMD R/C  1/8W   12KΩ    5%  0805",
+      "position_order": [
+        "R923"
+      ]
+    },
+    {
+      "part_no": "2AR10805E223J",
+      "specification": "SMD R/C  1/8W   22KΩ    5%  0805",
+      "position_order": [
+        "R55"
+      ]
+    },
+    {
+      "part_no": "2AR10805F104J",
+      "specification": "SMD R/C  1/8W  100KΩ    5%  0805",
+      "position_order": [
+        "R35",
+        "R50"
+      ]
+    },
+    {
+      "part_no": "2AR10805F124J",
+      "specification": "SMD R/C  1/8W  120KΩ    5%  0805",
+      "position_order": [
+        "R141"
+      ]
+    },
+    {
+      "part_no": "2AR10805G105J",
+      "specification": "SMD R/C  1/8W    1MΩ    5%  0805",
+      "position_order": [
+        "R123",
+        "R916"
+      ]
+    },
+    {
+      "part_no": "2AR11206A0R0J",
+      "specification": "SMD R/C  1/4W     0Ω    5%  1206",
+      "position_order": [
+        "C8"
+      ]
+    },
+    {
+      "part_no": "2AR11206A4R7J",
+      "specification": "SMD R/C  1/4W   4.7Ω    5%  1206",
+      "position_order": [
+        "R902"
+      ]
+    },
+    {
+      "part_no": "2AR11206B470J",
+      "specification": "SMD R/C  1/4W    47Ω    5%  1206",
+      "position_order": [
+        "R100",
+        "R103"
+      ]
+    },
+    {
+      "part_no": "2AR11206B910J",
+      "specification": "SMD R/C  1/4W    91Ω    5%  1206",
+      "position_order": [
+        "R138"
+      ]
+    },
+    {
+      "part_no": "2AR11206C221J",
+      "specification": "SMD R/C  1/4W   220Ω    5%  1206",
+      "position_order": [
+        "R905"
+      ]
+    },
+    {
+      "part_no": "2AR11206C301J",
+      "specification": "SMD R/C  1/4W   300Ω    5%  1206",
+      "position_order": [
+        "R121"
+      ]
+    },
+    {
+      "part_no": "2AR11206D102J",
+      "specification": "SMD R/C  1/4W    1KΩ    5%  1206",
+      "position_order": [
+        "R109",
+        "R111",
+        "R113"
+      ]
+    },
+    {
+      "part_no": "2AR11206E563J",
+      "specification": "SMD R/C  1/4W   56KΩ    5%  1206",
+      "position_order": [
+        "R920"
+      ]
+    },
+    {
+      "part_no": "2AR11206E753J",
+      "specification": "SMD R/C  1/4W   75KΩ    5%  1206",
+      "position_order": [
+        "R142"
+      ]
+    },
+    {
+      "part_no": "2AR20805B51R0F",
+      "specification": "SMD R/C  1/8W    51Ω    1%  0805",
+      "position_order": [
+        "R906"
+      ]
+    },
+    {
+      "part_no": "2AR20805C1000F",
+      "specification": "SMD R/C  1/8W   100Ω    1%  0805",
+      "position_order": [
+        "R908",
+        "R144"
+      ]
+    },
+    {
+      "part_no": "2AR20805C6800F",
+      "specification": "SMD R/C  1/8W   680Ω    1%  0805",
+      "position_order": [
+        "R907"
+      ]
+    },
+    {
+      "part_no": "2AR20805D1001F",
+      "specification": "SMD R/C  1/8W    1KΩ    1%  0805",
+      "position_order": [
+        "R49",
+        "R136"
+      ]
+    },
+    {
+      "part_no": "2AR20805D1301F",
+      "specification": "SMD R/C  1/8W  1.3KΩ    1%  0805",
+      "position_order": [
+        "R70"
+      ]
+    },
+    {
+      "part_no": "2AR20805D1501F",
+      "specification": "SMD R/C  1/8W  1.5KΩ    1%  0805",
+      "position_order": [
+        "R53",
+        "R913",
+        "R152"
+      ]
+    },
+    {
+      "part_no": "2AR20805D2001F",
+      "specification": "SMD R/C  1/8W    2KΩ    1%  0805",
+      "position_order": [
+        "R153"
+      ]
+    },
+    {
+      "part_no": "2AR20805D2321F",
+      "specification": "SMD R/C  1/8W 2.32KΩ    1%  0805",
+      "position_order": [
+        "R148",
+        "R116"
+      ]
+    },
+    {
+      "part_no": "2AR20805D3001F",
+      "specification": "SMD R/C  1/8W   3KΩ    1%  0805",
+      "position_order": [
+        "R137"
+      ]
+    },
+    {
+      "part_no": "2AR20805D3601F",
+      "specification": "SMD R/C  1/8W  3.6KΩ    1%  0805",
+      "position_order": [
+        "R117"
+      ]
+    },
+    {
+      "part_no": "2AR20805D5101F",
+      "specification": "SMD R/C  1/8W  5.1KΩ    1%  0805",
+      "position_order": [
+        "R200"
+      ]
+    },
+    {
+      "part_no": "2AR20805D5761F",
+      "specification": "SMD R/C  1/8W 5.76KΩ    1%  0805",
+      "position_order": [
+        "R909"
+      ]
+    },
+    {
+      "part_no": "2AR20805D7501F",
+      "specification": "SMD R/C  1/8W  7.5KΩ    1%  0805",
+      "position_order": [
+        "R918"
+      ]
+    },
+    {
+      "part_no": "2AR20805E1002F",
+      "specification": "SMD R/C  1/8W   10KΩ    1%  0805",
+      "position_order": [
+        "R145"
+      ]
+    },
+    {
+      "part_no": "2AR20805E1202F",
+      "specification": "SMD R/C  1/8W   12KΩ    1%  0805",
+      "position_order": [
+        "R912"
+      ]
+    },
+    {
+      "part_no": "2AR20805E3602F",
+      "specification": "SMD R/C  1/8W   36KΩ    1%  0805",
+      "position_order": [
+        "R59"
+      ]
+    },
+    {
+      "part_no": "2AR20805E3902F",
+      "specification": "SMD R/C  1/8W   39KΩ    1%  0805",
+      "position_order": [
+        "R151"
+      ]
+    },
+    {
+      "part_no": "2AR20805E4302F",
+      "specification": "SMD R/C  1/8W   43KΩ    1%  0805",
+      "position_order": [
+        "R926"
+      ]
+    },
+    {
+      "part_no": "2AR20805E5102F",
+      "specification": "SMD R/C  1/8W  51KΩ    1%  0805",
+      "position_order": [
+        "R154"
+      ]
+    },
+    {
+      "part_no": "2AR20805E5602F",
+      "specification": "SMD R/C  1/8W  56KΩ    1%  0805",
+      "position_order": [
+        "R149"
+      ]
+    },
+    {
+      "part_no": "2AR20805F1003F",
+      "specification": "SMD R/C  1/8W  100KΩ    1%  0805",
+      "position_order": [
+        "R146"
+      ]
+    },
+    {
+      "part_no": "2AR20805G1204F",
+      "specification": "SMD R/C  1/8W  1.2MΩ  1%  0805",
+      "position_order": [
+        "R75"
+      ]
+    },
+    {
+      "part_no": "2AR21206D4301F",
+      "specification": "SMD R/C 1/4W 4.3KΩ 1% 1206",
+      "position_order": [
+        "R135"
+      ]
+    },
+    {
+      "part_no": "2AR21206E3902F",
+      "specification": "SMD R/C  1/4W   39KΩ    1%  1206",
+      "position_order": [
+        "R110",
+        "R147"
+      ]
+    },
+    {
+      "part_no": "2AR21206G2204F",
+      "specification": "SMD R/C 1/4W  2.2MΩ  1%  1206",
+      "position_order": [
+        "R941",
+        "R942",
+        "R943"
+      ]
+    },
+    {
+      "part_no": "2AR42512A0R003F",
+      "specification": "SMD R/C 2W 3mΩ 1% LR2512-22",
+      "position_order": [
+        "J101"
+      ]
+    },
+    {
+      "part_no": "2AR51206G1504FC",
+      "specification": "高壓/耐濕 HR 1/4W 1.5M 1% 1206 super",
+      "position_order": [
+        "R63",
+        "R64",
+        "R65",
+        "R1",
+        "R2",
+        "R62"
+      ]
+    },
+    {
+      "part_no": "2AR61206A2R0J",
+      "specification": "耐浪湧 SWR  1/2W    2Ω    5%  1206",
+      "position_order": [
+        "R202",
+        "R201"
+      ]
+    },
+    {
+      "part_no": "2AR61206A4R7J",
+      "specification": "耐浪湧 SWR 1/2W 4.7Ω 5% 1206",
+      "position_order": [
+        "R41",
+        "R42"
+      ]
+    },
+    {
+      "part_no": "2AR61206A6R8J",
+      "specification": "耐浪湧 SWR 1/2W 6.8Ω 5% 1206",
+      "position_order": [
+        "R911",
+        "R919"
+      ]
+    },
+    {
+      "part_no": "2AR61206B100J",
+      "specification": "耐浪湧 SWR 1/2W 10Ω 5% 1206",
+      "position_order": [
+        "R60"
+      ]
+    },
+    {
+      "part_no": "2AR61206C751J",
+      "specification": "耐浪湧 SWR 1/2W 750Ω 5% 1206",
+      "position_order": [
+        "R30",
+        "R31",
+        "R32"
+      ]
+    },
+    {
+      "part_no": "2ARCTSM2A104F3971R",
+      "specification": "NTC 100KΩ 0805 TSM2A104F3971RZA",
+      "position_order": [
+        "RTH2"
+      ]
+    },
+    {
+      "part_no": "2BC108B220B500J",
+      "specification": "SMD C/MC  22P/50V  5%  NPO 0805",
+      "position_order": [
+        "C121"
+      ]
+    },
+    {
+      "part_no": "2BC108C331C101J",
+      "specification": "SMD C/MC  331/100V   5%  NPO 0805",
+      "position_order": [
+        "C139"
+      ]
+    },
+    {
+      "part_no": "2BC108C681B500J",
+      "specification": "SMD C/MC  681/50V    5%  NPO 0805",
+      "position_order": [
+        "C918"
+      ]
+    },
+    {
+      "part_no": "2BC108D102B500J",
+      "specification": "SMD C/MC  102/50V   5%  NPO 0805",
+      "position_order": [
+        "C910"
+      ]
+    },
+    {
+      "part_no": "2BC112B220D102J",
+      "specification": "SMD C/MC  22P/1KV    5%  NPO 1206",
+      "position_order": [
+        "C931",
+        "C932"
+      ]
+    },
+    {
+      "part_no": "2BC112C331C501J",
+      "specification": "SMD C/MC 331/500V 5% NPO 1206",
+      "position_order": [
+        "C922",
+        "C923"
+      ]
+    },
+    {
+      "part_no": "2BC208C221B500K",
+      "specification": "SMD C/MC  221/50V   10%  X7R 0805",
+      "position_order": [
+        "C51"
+      ]
+    },
+    {
+      "part_no": "2BC212C471C201K",
+      "specification": "SMD C/MC  471/200V  10%  X7R 1206",
+      "position_order": [
+        "C101",
+        "C100"
+      ]
+    },
+    {
+      "part_no": "2BC212D222C101K",
+      "specification": "SMD C/MC  222/100V  10%  X7R 1206",
+      "position_order": [
+        "C137"
+      ]
+    },
+    {
+      "part_no": "2BC508D102B500K",
+      "specification": "軟端 102/50V 10% X7R 0805-SH",
+      "position_order": [
+        "C52",
+        "C46"
+      ]
+    },
+    {
+      "part_no": "2BC508F104B500K",
+      "specification": "軟端 104/50V 10% X7R 0805-SH",
+      "position_order": [
+        "C930",
+        "C136",
+        "C48",
+        "C111",
+        "C924"
+      ]
+    },
+    {
+      "part_no": "2BC508F224B250K",
+      "specification": "軟端 224/25V  10% X7R 0805-SH",
+      "position_order": [
+        "C135"
+      ]
+    },
+    {
+      "part_no": "2BC508F224B500K",
+      "specification": "軟端 224/50V 10% X7R 0805-SH",
+      "position_order": [
+        "C912"
+      ]
+    },
+    {
+      "part_no": "2BC508F474B160K",
+      "specification": "軟端 474/16V 10% X7R 0805-SH",
+      "position_order": [
+        "C916",
+        "C917"
+      ]
+    },
+    {
+      "part_no": "2BC508G105B250K",
+      "specification": "軟端 105/25V 10% X7R 0805-SH",
+      "position_order": [
+        "C921",
+        "C907",
+        "C133",
+        "C134",
+        "C920",
+        "C908"
+      ]
+    },
+    {
+      "part_no": "2BC508G105B500K",
+      "specification": "軟端 105/50V 10% X7R 0805-SH",
+      "position_order": [
+        "C50"
+      ]
+    },
+    {
+      "part_no": "2BC508G225B250K",
+      "specification": "軟端 225/25V 10% X7R 0805-SH",
+      "position_order": [
+        "C132"
+      ]
+    },
+    {
+      "part_no": "2BC512E103D102K",
+      "specification": "軟端 103/1KV 10% X7R 1206-TX",
+      "position_order": [
+        "C9"
+      ]
+    },
+    {
+      "part_no": "2BC512F104B500K",
+      "specification": "軟端 104/50V  10% X7R 1206-SH",
+      "position_order": [
+        "C42",
+        "C43"
+      ]
+    },
+    {
+      "part_no": "2BC512F224B500K",
+      "specification": "軟端 224/50V  10% X7R 1206-SH",
+      "position_order": [
+        "C901"
+      ]
+    },
+    {
+      "part_no": "2BC512G105B500K",
+      "specification": "軟端 105/50V  10% X7R 1206-SH",
+      "position_order": [
+        "C120",
+        "C41"
+      ]
+    },
+    {
+      "part_no": "2BC512G225B250K",
+      "specification": "軟端 225/25V 10% X7R 1206-SH",
+      "position_order": [
+        "C131"
+      ]
+    },
+    {
+      "part_no": "2CD2FM4007M-TG",
+      "specification": "SMD RD 1A/1KV FM4007M-TG t=1.7",
+      "position_order": [
+        "D42"
+      ]
+    },
+    {
+      "part_no": "2CD5M1FL20U",
+      "specification": "SMD SFRD M1FL20U 1.1A/200V M1F",
+      "position_order": [
+        "D200"
+      ]
+    },
+    {
+      "part_no": "2CD5RF071MM2S",
+      "specification": "SMD SFRD RF071MM2S 1A/200V SOD-123",
+      "position_order": [
+        "D40",
+        "D4",
+        "D41"
+      ]
+    },
+    {
+      "part_no": "2CD5US1M",
+      "specification": "SMD SFRD US1M 1A/1KV SMA t=2",
+      "position_order": [
+        "D15"
+      ]
+    },
+    {
+      "part_no": "2CD6BAT54A-TSC",
+      "specification": "SBD BAT54A(TSC)  30V/200mA SOT-23",
+      "position_order": [
+        "D901"
+      ]
+    },
+    {
+      "part_no": "2CDA1SS355-TC",
+      "specification": "SMD HSD 1SS355   0.1A/80V   SOD-323",
+      "position_order": [
+        "D10",
+        "D101",
+        "D102",
+        "D11",
+        "D13",
+        "D133",
+        "D134",
+        "D14",
+        "D21",
+        "D22",
+        "D35",
+        "D36",
+        "D135"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50A02R4JS",
+      "specification": "0.5W 2.4V 5% MMSZ5221B C1 SOD123",
+      "position_order": [
+        "D903"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50A07R5JS",
+      "specification": "0.5W 7.5V 5% MMSZ5236B F1 SOD123",
+      "position_order": [
+        "ZD91"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50A09R1JS",
+      "specification": "0.5W 9.1V 5% MMSZ5239B F4 SOD123",
+      "position_order": [
+        "ZD122",
+        "ZD121"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50B14R0JS",
+      "specification": "0.5W 14V 5% MMSZ5244B H4 SOD123",
+      "position_order": [
+        "ZD90"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50B15R0JS",
+      "specification": "0.5W 15V 5% MMSZ5245B H5 SOD123",
+      "position_order": [
+        "ZD200",
+        "ZD101"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50B20R0JS",
+      "specification": "0.5W 20V 5% MMSZ5250B J5 SOD123",
+      "position_order": [
+        "ZD131"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50B22R0JS",
+      "specification": "0.5W 22V 5% MMSZ5251B K1 SOD123",
+      "position_order": [
+        "ZD132"
+      ]
+    },
+    {
+      "part_no": "2CDB-R50B30R0JS",
+      "specification": "0.5W 30V 5% MMSZ5256B M1 SOD123",
+      "position_order": [
+        "ZD906"
+      ]
+    },
+    {
+      "part_no": "2CQ12N7002K",
+      "specification": "SMD FET 2N7002K  300mA/60V  SOT-23",
+      "position_order": [
+        "Q7"
+      ]
+    },
+    {
+      "part_no": "2CQ12N7002KLT1",
+      "specification": "SMD FET 2N7002KLT1 320mA/60V SOT-23",
+      "position_order": [
+        "Q121"
+      ]
+    },
+    {
+      "part_no": "2CQ1BCX56-W",
+      "specification": "SMD BJT BCX56-16 1A/80V SOT-89",
+      "position_order": [
+        "Q200",
+        "Q904"
+      ]
+    },
+    {
+      "part_no": "2CQ1PMBS3904",
+      "specification": "SMD BJT PMBS3904 100mA/40V SOT-23",
+      "position_order": [
+        "Q120"
+      ]
+    },
+    {
+      "part_no": "2CQ1PMBT2907A",
+      "specification": "SMD BJT PMBT2907A-600mA/-60V SOT-23",
+      "position_order": [
+        "Q8",
+        "Q10",
+        "Q3",
+        "Q4",
+        "Q20",
+        "Q21"
+      ]
+    },
+    {
+      "part_no": "2CU1LA431OCRPA",
+      "specification": "MSD3 LA431OCRPA Vr=2.5V V=36V 0.4%",
+      "position_order": [
+        "SHR1",
+        "SR50",
+        "SHR2"
+      ]
+    },
+    {
+      "part_no": "2CU4HR1001C",
+      "specification": "MSD2 PWM HR1001C SOIC-16",
+      "position_order": [
+        "U900"
+      ]
+    },
+    {
+      "part_no": "2CU4NCP1618L",
+      "specification": "PWM NCP1618L SOIC−9",
+      "position_order": [
+        "U1"
+      ]
+    },
+    {
+      "part_no": "2CU5LM258ADT",
+      "specification": "OP  LM258ADT",
+      "position_order": [
+        "U107"
+      ]
+    },
+    {
+      "part_no": "2CU6MP6924A",
+      "specification": "MSD2 CONTROL MP6924A SOIC8",
+      "position_order": [
+        "U101"
+      ]
+    },
+    {
+      "part_no": "2DL608C601A2R0S",
+      "specification": "CHIP BEADS 600Ω±25% 2000mA 0805",
+      "position_order": [
+        "BC130",
+        "BC131",
+        "BC132",
+        "BC133",
+        "R900"
+      ]
+    }
+  ]
+}
