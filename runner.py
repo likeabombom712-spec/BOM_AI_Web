@@ -4,31 +4,36 @@ import os
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Iterable
 
 from openpyxl import load_workbook
 
-from bom_engine import BOMError as RSPBOMError
-from bom_engine import GenerationResult as RSPGenerationResult
-from bom_engine import generate_bom
-from hlg_engine import BOMError as HLGBOMError
-from hlg_engine import GenerationResult as HLGGenerationResult
-from hlg_engine import default_variant_from_profile, generate_from_xlsx
+from adaptive_engine import (
+    AdaptiveBOMError,
+    GenerationResult,
+    analyze_inputs,
+    generate_bom,
+)
 
 
 ProgressCallback = Callable[[int, int, str], None]
 
 
 class RunnerError(ValueError):
-    """Raised when inputs, family detection, or output paths are invalid."""
+    """Raised when inputs or output paths are invalid."""
 
 
 @dataclass(frozen=True)
 class SavedBOM:
     output_path: Path
     family: str
-    variant: int
-    result: RSPGenerationResult | HLGGenerationResult
+    models: tuple[int, ...]
+    target_keys: tuple[str, ...]
+    result: GenerationResult
+
+    @property
+    def variant(self) -> int | None:
+        return self.models[0] if len(self.models) == 1 else None
 
 
 def _report(
@@ -47,6 +52,11 @@ def _validate_xlsx(path: str | Path, label: str) -> Path:
         raise RunnerError(f"{label}不存在：{candidate}")
     if candidate.suffix.lower() != ".xlsx":
         raise RunnerError(f"{label}必須是 .xlsx 格式。")
+    try:
+        workbook = load_workbook(candidate, read_only=True, data_only=True)
+        workbook.close()
+    except Exception as exc:
+        raise RunnerError(f"{label}不是可讀取的 .xlsx 活頁簿。") from exc
     return candidate.resolve()
 
 
@@ -81,25 +91,36 @@ def _save_atomically(data: bytes, output_path: Path) -> None:
 
 
 def detect_family(source: str | Path) -> str:
-    """Detect the BOM profile from title/header content instead of the filename."""
-    wb = load_workbook(source, data_only=True, read_only=True)
-    ws = wb[wb.sheetnames[0]]
-    values: list[str] = []
-    for row in ws.iter_rows(
-        min_row=1,
-        max_row=min(ws.max_row, 25),
-        max_col=min(ws.max_column, 15),
-        values_only=True,
-    ):
-        values.extend(str(value).upper() for value in row if value is not None)
-    text = " ".join(values)
-    if "HLG-320H" in text or "9HLG-" in text:
-        return "HLG-320H（單工作表）"
-    if "RSP-3000" in text or "9RSP-" in text:
-        return "RSP-3000（A/B/C/E 四工作表）"
-    raise RunnerError(
-        "無法從基準 BOM 標題或半成品辨識系列。目前支援 RSP-3000 與 HLG-320H。"
+    """Return a descriptive profile without restricting generation to known names."""
+
+    candidate = _validate_xlsx(source, "基準 BOM")
+    workbook = load_workbook(candidate, data_only=True, read_only=True)
+    text = " ".join(
+        str(value).upper()
+        for worksheet in workbook.worksheets
+        for row in worksheet.iter_rows(
+            min_row=1,
+            max_row=min(worksheet.max_row, 40),
+            max_col=min(worksheet.max_column, 18),
+            values_only=True,
+        )
+        for value in row
+        if value is not None
     )
+    workbook.close()
+    if "RSP-3000" in text or "RSP-2400" in text:
+        return "RSP 系列（相容核心）"
+    if "HLG-320H" in text or "9HLG-" in text:
+        return "HLG 系列（相容核心）"
+    return "自動偵測系列／多工單格式"
+
+
+def _mode_label(mode: str, work_orders: int) -> str:
+    if mode == "legacy_rsp":
+        return "RSP 系列（V4/V5.1 相容核心）"
+    if mode == "legacy_hlg":
+        return "HLG 系列（既有驗證核心）"
+    return f"自動偵測格式（{work_orders} 個工單群組）"
 
 
 def run_generation(
@@ -107,65 +128,82 @@ def run_generation(
     difference_path: str | Path,
     output_path: str | Path,
     *,
+    selected_targets: Iterable[str] | None = None,
+    models: Iterable[int] | None = None,
     variant: int | None = None,
+    project_name: str | None = None,
     progress: ProgressCallback | None = None,
 ) -> SavedBOM:
     total_steps = 5
-    _report(progress, 1, total_steps, "正在檢查基準 BOM、差異表與輸出位置……")
+    _report(progress, 1, total_steps, "正在檢查兩份 Excel 與輸出位置……")
     baseline = _validate_xlsx(baseline_path, "基準 BOM")
     difference = _validate_xlsx(difference_path, "差異表")
     output = _output_path(output_path)
     if output in {baseline, difference}:
         raise RunnerError("輸出檔案不可覆蓋任何輸入檔案。")
 
-    _report(progress, 2, total_steps, "正在依標題、半成品與欄位自動辨識系列……")
-    family = detect_family(baseline)
-    profile_path = Path(__file__).resolve().parent / "profiles" / "hlg_320h.json"
-
-    selected_variant = variant
-    if selected_variant is None:
-        if family.startswith("HLG-320H"):
-            selected_variant = default_variant_from_profile(profile_path)
-        elif family.startswith("RSP-3000"):
-            selected_variant = 3
-        else:
-            raise RunnerError("無法自動判斷機種編號，請手動選擇。")
-
-    _report(
-        progress,
-        3,
-        total_steps,
-        f"已辨識：{family}；正在套用差異表機種編號 {selected_variant}……",
-    )
     try:
-        if family.startswith("HLG-320H"):
-            result: RSPGenerationResult | HLGGenerationResult = generate_from_xlsx(
-                baseline,
-                difference,
-                variant=int(selected_variant),
-                profile_source=profile_path,
+        _report(progress, 2, total_steps, "正在自動尋找表頭、工單、機種與製程區……")
+        analysis = analyze_inputs(baseline, difference)
+        available = {target.key: target for target in analysis.targets}
+
+        requested: tuple[str, ...]
+        if selected_targets is not None:
+            requested = tuple(dict.fromkeys(str(key) for key in selected_targets))
+        elif models is not None or variant is not None:
+            selected_models = {
+                int(model)
+                for model in (
+                    models if models is not None else (int(variant),)
+                )
+            }
+            requested = tuple(
+                target.key
+                for target in analysis.targets
+                if target.model in selected_models
             )
         else:
-            if int(selected_variant) != 3:
-                raise RunnerError(
-                    "RSP-3000 目前已驗證的機種編號為 3；"
-                    f"編號 {selected_variant} 尚未建立輸出機種設定。"
-                )
-            result = generate_bom(
-                baseline,
-                difference,
-                work_order="W2603D333A",
-                target_model="AB-RSP-3000-012-R19A",
-                variant=int(selected_variant),
-                apply_calibration=True,
-            )
-    except (RSPBOMError, HLGBOMError) as exc:
+            requested = tuple(available)
+
+        if not requested:
+            raise RunnerError("至少必須選擇一個工單／機種。")
+        unknown = [key for key in requested if key not in available]
+        if unknown:
+            raise RunnerError("找不到選取項目：" + "、".join(unknown))
+
+        expected_sheets = sum(len(available[key].sections) for key in requested)
+        _report(
+            progress,
+            3,
+            total_steps,
+            f"已辨識 {len(requested)} 個目標，正在產生 {expected_sheets} 張 BOM……",
+        )
+        result = generate_bom(
+            baseline,
+            difference,
+            selected_targets=requested,
+            project_name=project_name or baseline.stem,
+        )
+    except RunnerError:
+        raise
+    except AdaptiveBOMError as exc:
         raise RunnerError(str(exc)) from exc
 
-    _report(progress, 4, total_steps, "正在合併相同品號／規格的位置、檢查重複與單量……")
+    _report(progress, 4, total_steps, "正在核對選料、單量、合併與重複位置……")
     _save_atomically(result.workbook_bytes, output)
+    work_orders = len({sheet.work_order_group for sheet in result.sheets})
+    family = _mode_label(result.mode, work_orders)
+    selected_models = tuple(
+        dict.fromkeys(available[key].model for key in requested)
+    )
     _report(progress, 5, total_steps, "BOM 已產生完成。")
-    return SavedBOM(output, family, int(selected_variant), result)
+    return SavedBOM(
+        output_path=output,
+        family=family,
+        models=selected_models,
+        target_keys=requested,
+        result=result,
+    )
 
 
 __all__ = ["RunnerError", "SavedBOM", "detect_family", "run_generation"]
